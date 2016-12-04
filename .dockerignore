@@ -1,0 +1,10 @@
+# in order to speed up building of the docker image
+.idea/*
+META-INF/*
+out/*
+project/*
+src/*
+target/*
+
+
+
