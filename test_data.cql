@@ -15,7 +15,7 @@ INSERT INTO udf.ware_hits (ware_id, date_time, visitor_id) VALUES (1, toTimestam
 INSERT INTO udf.ware_hits (ware_id, date_time, visitor_id) VALUES (1, toTimestamp(now()), 5);
 INSERT INTO udf.ware_hits (ware_id, date_time, visitor_id) VALUES (1, toTimestamp(now()), 6);
 
-SELECT udf.hll(visitor_id) FROM udf.ware_hits WHERE ware_id = 1;
-SELECT count(visitor_id) FROM udf.ware_hits WHERE ware_id = 1;
+SELECT count(visitor_id) as total_count FROM udf.ware_hits WHERE ware_id = 1; -- total_count = 9
+SELECT udf.hll(visitor_id) as unique_users FROM udf.ware_hits WHERE ware_id = 1; --out aggregate returns unique_users = 6
 
 --TRUNCATE udf.ware_hits;
