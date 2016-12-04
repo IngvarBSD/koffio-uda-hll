@@ -1,3 +1,10 @@
+-- Keyspace definition
+CREATE KEYSPACE IF NOT EXISTS udf
+WITH replication = {
+	'class' : 'SimpleStrategy',
+	'replication_factor' : 1
+};
+
 -- Functions for hll counters
 CREATE OR REPLACE FUNCTION udf.hll_state ( state blob, val int ) CALLED ON NULL INPUT RETURNS blob LANGUAGE java AS
   'return io.koff.udf.HLL.stateFunc(state, val);';
